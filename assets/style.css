@@ -2649,6 +2649,11 @@ body {
   }
 }
 
+/* ===== SECTION ===== */
+.contact-section {
+  padding: 60px 20px;
+}
+
 /* ===== CARD ===== */
 .coordinator-card {
   max-width: 520px;
@@ -2741,4 +2746,5 @@ body {
     font-size: 0.78rem;
   }
 }
+
 
