@@ -2790,3 +2790,104 @@ body {
     }
   }
 }
+
+/* CONTACT SECTION */
+.contact-section {
+  padding: 60px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+/* BOX */
+.contact-box {
+  width: 100%;
+  max-width: 420px;
+  padding: 28px;
+  border-radius: 14px;
+  background: rgba(0,0,0,0.65);
+  border: 1px solid rgba(229,9,20,0.4);
+
+  box-shadow:
+    0 0 30px rgba(229,9,20,0.35),
+    inset 0 0 18px rgba(0,0,0,0.9);
+}
+
+/* TITLE */
+.contact-title {
+  text-align: center;
+  margin-bottom: 24px;
+  color: #ff2a2a;
+  letter-spacing: 3px;
+  font-size: 1.05rem;
+  text-shadow: 0 0 12px rgba(255,42,42,0.8);
+}
+
+/* ROW */
+.contact-row {
+  margin-bottom: 18px;
+  justify-content: space-evenly;
+}
+
+/* TEXT WRAP */
+.coord-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 4px;
+}
+
+/* NAME + ICON INLINE */
+.name-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* NAME */
+.coord-name {
+  font-size: 1rem;
+  letter-spacing: 1px;
+  color: #eee;
+}
+
+/* PHONE NUMBER (DIM) */
+.contact-no {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.6);
+}
+
+/* PHONE ICON */
+.coord-icon {
+  font-size: 1.1rem;
+  padding-left: 160px;
+  color: #ff3b3b;
+  transition: transform 0.25s ease, text-shadow 0.25s ease;
+}
+
+.coord-icon:hover {
+  transform: scale(1.25);
+  text-shadow: 0 0 12px red;
+}
+
+/* ================= MOBILE FIX ================= */
+@media (max-width: 768px) {
+
+  .contact-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact-box {
+    width: 100%;
+  }
+
+  .name-line {
+    justify-content: center;
+  }
+
+  .coord-text {
+    text-align: center;
+  }
+}
