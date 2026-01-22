@@ -2790,35 +2790,3 @@ body {
     }
   }
 }
-
-/* ============================
-   FORCE LOADER ABOVE EVERYTHING (MOBILE)
-   ============================* 
-@media (max-width: 768px) {
-
-  html, body {
-    width: 100%;
-    height: 100%;
-    overflow: hidden !important;
-  }
-
-  body.register-bg {
-    position: static !important;
-    min-height: auto !important;
-    background-attachment: scroll !important;
-  }
-
-  #stLoader {
-    position: fixed !important;
-    inset: 0;
-    width: 100vw;
-    height: 100svh;
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-    z-index: 2147483647; /* MAX SAFE * 
-    background: #000;
-  }
-
-}*/
-
