@@ -2793,7 +2793,7 @@ body {
 
 /* ============================
    FORCE LOADER ABOVE EVERYTHING (MOBILE)
-   ============================*/ 
+   ============================* 
 @media (max-width: 768px) {
 
   html, body {
@@ -2816,8 +2816,9 @@ body {
     display: flex !important;
     align-items: center;
     justify-content: center;
-    z-index: 2147483647; /* MAX SAFE */ 
+    z-index: 2147483647; /* MAX SAFE * 
     background: #000;
   }
 
-}
+}*/
+
