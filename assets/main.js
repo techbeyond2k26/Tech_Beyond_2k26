@@ -217,7 +217,7 @@ document.getElementById("stLoader").classList.add("active");
 
 
   const SCRIPT_URL =
-    "https://script.google.com/macros/s/AKfycbzBA4i1khiDO-qihsmfATK-xG7uaIKtennAG3Va6DeQ2dxHPkj5wOf-GDQqfqqNvzvGdA/exec";
+    "https://script.google.com/macros/s/AKfycbwd5JkEsTF9OPOwKlPsc5Sf85XAbUquCe5msvIrtj8IIteeFp2TpJ76sNjZzoZs72_Uog/exec";
 
   const surprise = document.getElementById("surpriseEvent");
   surprise.value = surprise.checked ? "YES" : "NO";
@@ -323,6 +323,7 @@ function triggerUpsideDown() {
   }, 1700);
 }
 });
+
 
 
 
