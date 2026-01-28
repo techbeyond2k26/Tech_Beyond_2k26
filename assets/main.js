@@ -379,3 +379,4 @@ function triggerUpsideDown() {
   }, 1700);
 }
 });
+
