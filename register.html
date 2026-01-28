@@ -35,9 +35,6 @@
       Registration is not just a form — it’s a passage into the
       <span class="glitch" data-text="Upside Down">Upside Down</span>.
     </p>
-    <p class="register-sub">
-      Entry Fee: 200 Per Head
-   </p>
 
     <form>
 
@@ -56,6 +53,13 @@
         id="email"
         name="email"
         placeholder="Email Address"
+        required>
+      <label for="Mobile Number">Mobile Number</label>
+      <input
+        type="number"
+        id="mobile number"
+        name="number"
+        placeholder="Mobile Number"
         required>
 
       <label for="college">College Name</label>
@@ -86,7 +90,7 @@
         <option>Other</option>
       </select>
 
-      <p class="event-heading">Select Maximum 3 events</p>
+      <p class="event-heading">Select only 3 events</p>
       <!-- Hidden counter (DO NOT REMOVE) -->
       <span id="eventCount" style="display:none;">0</span>
       <!-- EVENTS -->
@@ -140,7 +144,7 @@
 
         <label class="event-option">
           <input type="checkbox" name="events" data-team="true" data-min="1" data-max="2">
-          <span>Play with Vecna<br>(Gaming)</span>
+          <span>Play with Vecna<br>(Gamming)</span>
         </label>
       <div class="team-fields" data-team-fields style="display:none;"></div>
 
@@ -168,10 +172,12 @@
 
       </div>
 
+
       <!-- SURPRISE EVENT -->
       <h3 class="event-heading">SURPRISE EVENT</h3>
       <p class="event-note">
-      Surprise Event costs extra ₹50 (Total ₹250).
+        Pay ₹200 for 3 events.<br>
+        Surprise Event costs extra ₹50 (Total ₹250).
       </p>
 
       <label class="event-option">
