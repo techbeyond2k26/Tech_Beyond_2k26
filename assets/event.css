@@ -134,12 +134,12 @@ a {
 /* MOBILE */
 @media (max-width: 768px) {
   .st-nav-inner {
-    gap: 12px;
-    padding: 6px 14px;
+    gap: 10px;
+    padding: 4px 12px;
   }
 
   .st-menu {
-    gap: 10px;
+    gap: 8px;
   }
 
   .st-menu a {
@@ -147,7 +147,7 @@ a {
   }
 
   .st-register {
-    padding: 4px 12px;
+    padding: 4px 11px;
     font-size: 0.80rem;
   }
 }
@@ -1239,6 +1239,7 @@ h3, h4 {
   font-size: 0.85rem;
   opacity: 0.75;
 }
+
 
 
 
