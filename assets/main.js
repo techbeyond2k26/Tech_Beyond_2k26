@@ -138,107 +138,42 @@ const fade = setInterval(() => {
     cb.addEventListener("change", updateEventCount)
   );
 
-  /* ================= TEAM EVENTS ================= */
-  document.querySelectorAll('input[data-team="true"]').forEach(cb => {
-const container = cb.closest(".event-option").nextElementSibling;
-if (!container) return;
-    const min = Number(cb.dataset.min);
-    const max = Number(cb.dataset.max);
+  /* ================= TEAM EVENTS (ONLY TEAM SIZE) ================= */
+document.querySelectorAll('input[data-team="true"]').forEach(cb => {
+  const container = cb.closest(".event-option").nextElementSibling;
+  if (!container) return;
 
-    cb.addEventListener("change", () => {
-      updateEventCount();
+  const min = Number(cb.dataset.min);
+  const max = Number(cb.dataset.max);
 
-      if (!cb.checked) {
-        container.style.display = "none";
-        container.innerHTML = "";
-        return;
-      }
+  cb.addEventListener("change", () => {
+    updateEventCount();
 
-      container.style.display = "block";
-     container.innerHTML = `
-  <select class="team-size" name="teamSize" required>
-    <option value="" disabled selected>
-      Select Team Size (${min}-${max})
-    </option>
-  </select>
+    if (!cb.checked) {
+      container.style.display = "none";
+      container.innerHTML = "";
+      return;
+    }
 
-  <div class="team-name-box" style="display:none;">
-    <input
-      type="text"
-      name="teamName"
-      placeholder="Team Name"
-    >
-  </div>
+    container.style.display = "block";
 
-  <h4 style="color:#ff1b1b;margin:8px 0;">Team Head Details</h4>
-  <input type="text" name="teamHeadName" placeholder="Team Head Name" required>
-  <input type="email" name="teamHeadEmail" placeholder="Email" required>
-  <input type="tel" name="teamHeadMobile" placeholder="Mobile" required>
-
-  <div class="team-members"></div>
-`;
-
-
-    /* ================================================================ */
-      const sizeSelect = container.querySelector(".team-size");
-      const membersDiv = container.querySelector(".team-members");
-      sizeSelect.addEventListener("change", () => {
-  membersDiv.innerHTML = "";
-  const total = Number(sizeSelect.value);
-
-  const teamNameBox = container.querySelector(".team-name-box");
-  const teamNameInput = container.querySelector('input[name="teamName"]');
-
-  // ✅ SHOW / HIDE TEAM NAME
-  if (total > 1) {
-    teamNameBox.style.display = "block";
-    teamNameInput.required = true;
-  } else {
-    teamNameBox.style.display = "none";
-    teamNameInput.required = false;
-    teamNameInput.value = "";
-  }
-
-  // ✅ ADD MEMBERS
-  for (let i = 2; i <= total; i++) {
-    membersDiv.innerHTML += `
-      <input type="text" name="member${i}Name" placeholder="Member ${i} Name" required>
-      <input type="email" name="member${i}Email" placeholder="Member ${i} Email" required>
-      <input type="tel" name="member${i}Mobile" placeholder="Member ${i} Mobile" required>
+    let options = `
+      <option value="" disabled selected>
+        Select Team Size (${min}-${max})
+      </option>
     `;
-  }
-});
 
-      for (let i = min; i <= max; i++) {
-        sizeSelect.innerHTML += `<option value="${i}">${i}</option>`;
-      }
-      const teamNameBox = container.querySelector(".team-name-box");
-const teamNameInput = container.querySelector('input[name="teamName"]');
+    for (let i = min; i <= max; i++) {
+      options += `<option value="${i}">${i}</option>`;
+    }
 
-if (Number(sizeSelect.value) > 1) {
-  teamNameBox.style.display = "block";   // show team name
-  teamNameInput.required = true;
-} else {
-  teamNameBox.style.display = "none";    // hide team name
-  teamNameInput.required = false;
-  teamNameInput.value = "";
-}
-
-      sizeSelect.addEventListener("change", () => {
-        membersDiv.innerHTML = "";
-        const total = Number(sizeSelect.value);
-
-        for (let i = 2; i <= total; i++) {
-          membersDiv.innerHTML += `
-  <input type="text" name="member${i}Name" placeholder="Member ${i} Name" required>
-  <input type="email" name="member${i}Email" placeholder="Member ${i} Email" required>
-  <input type="tel" name="member${i}Mobile" placeholder="Member ${i} Mobile" required>
-`;
-
-        }
-      });
-    });
+    container.innerHTML = `
+      <select class="team-size" required>
+        ${options}
+      </select>
+    `;
   });
+});
 
   /* ================= PAYMENT LOGIC ================= */
   const surprise = document.getElementById("surpriseEvent");
@@ -263,7 +198,7 @@ document.getElementById("stLoader").classList.add("active");
 
 
   const SCRIPT_URL =
-    "https://script.google.com/macros/s/AKfycbx9vpUv-2sV_eNcC-OEu6hCBEREJrXOUY2QdF5nx5Wx1tV8IuFQyfsl2Aq3ecvnaEwOPQ/exec";
+    "https://script.google.com/macros/s/AKfycbyMISi_3PXAsrJLWYDeBNb2taido1nBjjahhFKibuffeDIGb98HEHCakwjyCK6pdFQZUw/exec";
 
   const surprise = document.getElementById("surpriseEvent");
   surprise.value = surprise.checked ? "YES" : "NO";
@@ -292,51 +227,25 @@ document.getElementById("stLoader").classList.add("active");
     addHidden("payment_filename", file.name);
     addHidden("payment_mime", file.type);
 
-    /* ================= EVENTS ================= */
-    const selectedEvents =
-      document.querySelectorAll('input[name="events"]:checked');
+/* ================= EVENTS ================= */
+const selectedEvents =
+  document.querySelectorAll('input[name="events"]:checked');
 
-    addHidden("eventCount", selectedEvents.length);
-    selectedEvents.forEach((cb, i) => {
+addHidden("eventCount", selectedEvents.length);
+
+selectedEvents.forEach((cb, i) => {
   const label = cb.closest("label");
   const block = label.nextElementSibling;
 
+  // Event name
   addHidden(`event_name_${i}`, label.innerText.trim());
 
+  // Team size (ONLY DATA REQUIRED)
   const teamSize =
-    Number(block.querySelector(".team-size")?.value || 1);
+    block.querySelector(".team-size")?.value || "1";
 
   addHidden(`event_teamSize_${i}`, teamSize);
-
-  let teamNameValue = "Individual";
-
-  if (teamSize > 1) {
-    teamNameValue =
-      block.querySelector('input[name="teamName"]')?.value || "Team";
-  }
-
-  addHidden(`event_${i}_teamName`, teamNameValue);
-
-  const inputs = block.querySelectorAll("input");
-
-  addHidden(`event_${i}_head_name`, inputs[1]?.value || "");
-  addHidden(`event_${i}_head_email`, inputs[2]?.value || "");
-  addHidden(`event_${i}_head_mobile`, inputs[3]?.value || "");
-
-  let idx = 4;
-  for (let m = 2; m <= teamSize; m++) {
-    addHidden(`event_${i}_m${m}_name`, inputs[idx++]?.value || "");
-    addHidden(`event_${i}_m${m}_email`, inputs[idx++]?.value || "");
-    addHidden(`event_${i}_m${m}_mobile`, inputs[idx++]?.value || "");
-  }
-});
-
-    
-    
-    if (!form.checkValidity()) {
-  form.reportValidity();
-  return;
-}
+});   
 const food = document.querySelector('input[name="foodPreference"]:checked');
 addHidden("food_preference", food ? food.value : "");
 
@@ -379,4 +288,3 @@ function triggerUpsideDown() {
   }, 1700);
 }
 });
-
