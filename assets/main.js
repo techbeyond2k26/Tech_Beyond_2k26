@@ -162,7 +162,7 @@ document.getElementById("stLoader").classList.add("active");
 
 
   const SCRIPT_URL =
-    "https://script.google.com/macros/s/AKfycby3TJN-TEg_G_kxpN9m6-zpMWcULsQS0CqDT5U8iyw49RFiQftLQjMXIfPFlD5D1vyKvA/exec";
+    "https://script.google.com/macros/s/AKfycbxbo1WWJQS-yopP5co95dkUXkkdHq0_uimV1d0qGts4I4cg4Sqpid-8DSsXaPqIlAR6hA/exec";
 
   const surprise = document.getElementById("surpriseEvent");
   surprise.value = surprise.checked ? "YES" : "NO";
@@ -252,3 +252,4 @@ function triggerUpsideDown() {
   }, 1700);
 }
 });
+
