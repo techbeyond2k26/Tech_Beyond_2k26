@@ -138,42 +138,6 @@ const fade = setInterval(() => {
     cb.addEventListener("change", updateEventCount)
   );
 
-  /* ================= TEAM EVENTS (ONLY TEAM SIZE) ================= */
-document.querySelectorAll('input[data-team="true"]').forEach(cb => {
-  const container = cb.closest(".event-option").nextElementSibling;
-  if (!container) return;
-
-  const min = Number(cb.dataset.min);
-  const max = Number(cb.dataset.max);
-
-  cb.addEventListener("change", () => {
-    updateEventCount();
-
-    if (!cb.checked) {
-      container.style.display = "none";
-      container.innerHTML = "";
-      return;
-    }
-
-    container.style.display = "block";
-
-    let options = `
-      <option value="" disabled selected>
-        Select Team Size (${min}-${max})
-      </option>
-    `;
-
-    for (let i = min; i <= max; i++) {
-      options += `<option value="${i}">${i}</option>`;
-    }
-
-    container.innerHTML = `
-      <select class="team-size" required>
-        ${options}
-      </select>
-    `;
-  });
-});
 
   /* ================= PAYMENT LOGIC ================= */
   const surprise = document.getElementById("surpriseEvent");
@@ -198,7 +162,7 @@ document.getElementById("stLoader").classList.add("active");
 
 
   const SCRIPT_URL =
-    "https://script.google.com/macros/s/AKfycbyMISi_3PXAsrJLWYDeBNb2taido1nBjjahhFKibuffeDIGb98HEHCakwjyCK6pdFQZUw/exec";
+    "https://script.google.com/macros/s/AKfycby3TJN-TEg_G_kxpN9m6-zpMWcULsQS0CqDT5U8iyw49RFiQftLQjMXIfPFlD5D1vyKvA/exec";
 
   const surprise = document.getElementById("surpriseEvent");
   surprise.value = surprise.checked ? "YES" : "NO";
